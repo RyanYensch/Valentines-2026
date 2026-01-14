@@ -1,0 +1,278 @@
+:root {
+  --bg: #ffb6c1;
+  --card: rgba(255, 255, 255, 0.88);
+  --text: #111;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: ui-sans-serif, system-ui, Arial;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.card {
+  width: min(760px, 92vw);
+  background: var(--card);
+  border-radius: 20px;
+  padding: 22px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+}
+
+.title {
+  margin: 0 0 8px;
+  font-size: 34px;
+}
+
+.subtitle {
+  margin: 0 0 18px;
+  opacity: 0.9;
+}
+
+.row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.row.space {
+  margin-top: 18px;
+}
+
+.btn {
+  border: none;
+  border-radius: 14px;
+  padding: 12px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.14);
+}
+
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.yes {
+  background: #ff3b7a;
+  color: white;
+}
+
+.no {
+  background: #6b6b6b;
+  color: white;
+}
+
+.ghost {
+  background: transparent;
+  border: 2px dashed rgba(0, 0, 0, 0.25);
+}
+
+.badge {
+  display: inline-block;
+  background: rgba(0, 0, 0, 0.08);
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+.content {
+  margin-top: 10px;
+}
+
+.hint {
+  opacity: 0.85;
+}
+
+.arena {
+  position: relative;
+  height: 320px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.65);
+  border: 2px solid rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+  margin: 14px 0;
+}
+
+.floating {
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+
+.arena.dark {
+  position: relative;
+  background: #000;
+  overflow: hidden;
+}
+
+.darkness {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5;
+
+  background:
+    radial-gradient(circle 120px at var(--x) var(--y),
+      transparent 0%,
+      transparent 35%,
+      rgba(0, 0, 0, 0.95) 55%,
+      rgba(0, 0, 0, 1) 100%);
+}
+
+.hidden {
+  opacity: 0;
+}
+
+.arena.dark:hover .hidden {
+  opacity: 1;
+}
+
+.arena.dark .floating {
+  z-index: 1;
+}
+
+
+
+.maze {
+  display: grid;
+  grid-template-columns: repeat(9, 34px);
+  gap: 2px;
+  margin-top: 14px;
+}
+
+.mazeCell {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 6px;
+  font-size: 12px;
+  user-select: none;
+}
+
+.wall {
+  background: rgba(0, 0, 0, 0.22);
+}
+
+.empty {
+  background: rgba(255, 255, 255, 0.65);
+}
+
+.goal {
+  background: rgba(255, 59, 122, 0.25);
+  font-weight: 700;
+}
+
+.ms {
+  display: grid;
+  grid-template-columns: repeat(8, 44px);
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.msCell {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  border: 2px solid rgba(0, 0, 0, 0.12);
+  background: rgba(218, 19, 184, 0.7);
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.msCell.rev {
+  background: rgba(209, 125, 184, 0.95);
+}
+
+.msCell.mine {
+  background: rgba(255, 0, 0, 0.18);
+}
+
+.msCell.flagged {
+  background: rgba(255, 255, 0, 0.2);
+}
+
+.bigCard {
+  width: 120px;
+  height: 150px;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 16px;
+  font-size: 48px;
+  font-weight: 800;
+  border: 2px solid rgba(0, 0, 0, 0.12);
+  margin: 12px 0;
+}
+
+.input {
+  width: min(520px, 90%);
+  border-radius: 12px;
+  border: 2px solid rgba(0, 0, 0, 0.15);
+  padding: 10px 12px;
+  font-size: 16px;
+}
+
+.sudoku {
+  display: grid;
+  grid-template-columns: repeat(4, 54px);
+  gap: 8px;
+  margin: 14px 0;
+}
+
+.sCell {
+  width: 54px;
+  height: 54px;
+  border-radius: 12px;
+  border: 2px solid rgba(0, 0, 0, 0.15);
+  text-align: center;
+  font-size: 20px;
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.sCell.fixed {
+  background: rgba(0, 0, 0, 0.08);
+  font-weight: 700;
+}
+
+.reaction {
+  height: 140px;
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+  font-size: 18px;
+  font-weight: 700;
+  margin: 14px 0;
+  border: 2px solid rgba(0, 0, 0, 0.12);
+  user-select: none;
+}
+
+.reaction.ready {
+  background: rgba(255, 255, 255, 0.75);
+}
+
+.reaction.waiting {
+  background: rgba(255, 200, 0, 0.25);
+}
+
+.reaction.go {
+  background: rgba(0, 255, 0, 0.25);
+  cursor: pointer;
+}
+
+.reaction.result {
+  background: rgba(255, 255, 255, 0.9);
+}
